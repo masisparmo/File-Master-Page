@@ -4,9 +4,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>File Master - Hentikan Kekacauan Data Anda Sekarang!</title>
+
+    <!-- SEO Meta Tags -->
+    <title>File Master - Hentikan Kekacauan Data & Kelola File dengan AI</title>
     <meta name="description"
-        content="Hentikan pemborosan waktu dan risiko kehilangan data. File Master adalah manajer file berbasis AI yang menyelamatkan Anda dari bencana digital.">
+        content="Hentikan pemborosan waktu dan risiko kehilangan data. File Master adalah manajer file Windows berbasis AI (Gemini) yang cerdas untuk ringkasan dokumen, auto-tagging gambar, dan pengorganisasian data otomatis.">
+    <meta name="keywords"
+        content="file manager ai, manajer file windows, pengelola file cerdas, ringkasan pdf ai, auto tagging gambar, enkripsi file aes-256, file explorer alternatif, produktivitas windows">
+    <meta name="author" content="Isparmo">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://localhost:8000/">
+    <meta property="og:title" content="File Master - Hentikan Kekacauan Data & Kelola File dengan AI">
+    <meta property="og:description"
+        content="Berapa jam yang Anda sia-siakan? Biarkan AI (Gemini) yang mengurus kekacauan folder Anda. Ringkasan dokumen instan, enkripsi data, dan produktivitas 2x lipat.">
+    <meta property="og:image" content="screenshot.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="File Master - Kelola File dengan Kecerdasan AI">
+    <meta name="twitter:description"
+        content="Hentikan cara manual mengatur file. Gunakan File Master untuk efisiensi kerja yang maksimal.">
+    <meta name="twitter:image" content="screenshot.png">
+
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,153 +40,178 @@
     <header>
         <nav class="container">
             <div class="logo">
-                <img src="logo.png" alt="File Master Logo">
-                <span>File Master</span>
+                <img src="logo.png" alt="File Master Logo - Cerdas & Efisien">
+                <a href="/" class="logo-text">File Master</a>
             </div>
+
             <div class="nav-right">
-                <button id="theme-toggle" class="btn-icon" title="Toggle Theme">
+                <button id="theme-toggle" class="btn-icon" aria-label="Ganti Tema" title="Toggle Theme">
                     <span class="theme-icon">🌙</span>
                 </button>
                 <div class="lang-switcher">
                     <button class="lang-btn active" data-lang="id">ID</button>
                     <button class="lang-btn" data-lang="en">EN</button>
                 </div>
-                <a href="#download" class="btn btn-secondary" data-i18n="nav-cta">Hentikan Buang Waktu</a>
+                <a href="#download" class="btn btn-secondary nav-cta-btn" data-i18n="nav-cta">Hentikan Buang Waktu</a>
+
+                <!-- Mobile Menu Button -->
+                <button class="hamburger" id="hamburger" aria-label="Menu Mobile">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </nav>
+
+        <!-- Mobile Dropdown -->
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#download" data-i18n="nav-cta" class="mobile-link">Hentikan Buang Waktu</a>
+            <div class="mobile-tools">
+                <button id="theme-toggle-mobile" class="btn-icon">
+                    <span class="theme-icon-mobile">🌙</span>
+                </button>
+                <div class="lang-switcher-mobile">
+                    <button class="lang-btn active" data-lang="id">ID</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                </div>
+            </div>
+        </div>
     </header>
 
     <main>
-        <section class="hero container">
-            <div class="hero-content">
-                <h1 class="loss-heading">
-                    <span data-i18n="hero-h1-part1">Berapa Jam yang Anda</span>
-                    <span data-i18n="hero-h1-lost">SIA-SIAKAN</span>
-                    <span data-i18n="hero-h1-part2">Hanya untuk Mencari Satu File?</span>
-                </h1>
-                <p class="hero-desc" data-i18n="hero-desc">Waktu Anda tidak bisa diputar kembali. Jangan habiskan untuk
-                    pekerjaan manual mengatur folder. Biarkan AI mengambil beban itu sebelum Anda kehilangan satu hari
-                    produktif lagi karena kekacauan digital.</p>
-                <div class="hero-ctas">
+        <article>
+            <section class="hero container">
+                <div class="hero-content">
+                    <h1 class="loss-heading">
+                        <span data-i18n="hero-h1-part1">Berapa Jam yang Anda</span>
+                        <span data-i18n="hero-h1-lost">SIA-SIAKAN</span>
+                        <span data-i18n="hero-h1-part2">Hanya untuk Mencari Satu File?</span>
+                    </h1>
+                    <p class="hero-desc" data-i18n="hero-desc">Waktu Anda tidak bisa diputar kembali. Jangan habiskan
+                        untuk pekerjaan manual mengatur folder. Biarkan AI mengambil beban itu sebelum Anda kehilangan
+                        satu hari produktif lagi karena kekacauan digital.</p>
+                    <div class="hero-ctas">
+                        <a href="https://drive.google.com/file/d/1NgMt37TYRmsk81OMxbdIHeC7iCaRbRPL/view?usp=sharing"
+                            target="_blank" rel="noopener" class="btn btn-primary" id="download"
+                            data-i18n="hero-download">Download untuk Windows — Gratis</a>
+                        <p class="cta-note" data-i18n="hero-note">Jangan tunggu sampai hard drive Anda penuh untuk mulai
+                            merapikannya.</p>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="glass-container">
+                        <img src="screenshot.png" alt="Tampilan Antarmuka File Master - Modern & Canggih"
+                            id="app-preview" loading="eager">
+                    </div>
+                </div>
+            </section>
+
+            <section class="loss-grid container">
+                <h2 class="section-title" data-i18n="section-cost-title">Apa Akibat dari Ruang Kerja yang
+                    <span>BERANTAKAN?</span></h2>
+                <div class="cards">
+                    <section class="card glass">
+                        <div class="icon">⌛</div>
+                        <h3 data-i18n="card1-title">Produktivitas Hilang</h3>
+                        <p data-i18n="card1-desc">Berhenti membuang 30+ menit setiap hari hanya untuk mengganti nama
+                            file atau mencari satu PDF. Itu lebih dari 180 jam setahun yang hilang selamanya.</p>
+                    </section>
+                    <section class="card glass">
+                        <div class="icon">💾</div>
+                        <h3 data-i18n="card2-title">Ruang Disk Terbuang</h3>
+                        <p data-i18n="card2-desc">PC Anda sesak karena file duplikat. Jangan membayar penyimpanan cloud
+                            mahal hanya karena Anda tidak punya alat untuk membersihkan drive lokal Anda.</p>
+                    </section>
+                    <section class="card glass">
+                        <div class="icon">📂</div>
+                        <h3 data-i18n="card3-title">Kekacauan yang Tidak Terkendali</h3>
+                        <p data-i18n="card3-desc">Menamai ratusan file satu per satu adalah siksaan mental. Jangan
+                            biarkan proyek Anda membusuk karena penamaan "folder_baru_final_v2".</p>
+                    </section>
+                </div>
+            </section>
+
+            <!-- Detailed Features Section -->
+            <section class="detailed-features container">
+                <h2 class="section-title" data-i18n="features-title">Fitur Lengkap yang Menyelamatkan <span>Masa Depan
+                        Anda</span></h2>
+                <div class="feature-grid">
+                    <section class="feat-item glass">
+                        <h4 data-i18n="f1-t">🚀 Dual-Pane File Explorer</h4>
+                        <p data-i18n="f1-d">Kelola file 2x lebih cepat dengan dua panel berdampingan. Sistem Copy-Paste
+                            Asinkron memastikan aplikasi tetap lancar tanpa hang saat memproses file besar. Mendukung
+                            layout vertikal dan horizontal untuk fleksibilitas maksimal.</p>
+                    </section>
+                    <section class="feat-item glass">
+                        <h4 data-i18n="f2-t">🤖 AI Assistant (Gemini Core)</h4>
+                        <p data-i18n="f2-d">Tanya apa saja pada file Anda. Ringkas dokumen PDF atau Word yang tebal
+                            dalam hitungan detik. AI kami membaca untuk Anda agar Anda bisa fokus pada keputusan
+                            penting, bukan filler.</p>
+                    </section>
+                    <section class="feat-item glass">
+                        <h4 data-i18n="f3-t">📋 System-Wide Clipboard History</h4>
+                        <p data-i18n="f3-d">Mencatat setiap teks dan file yang Anda copy ke dalam database SQLite yang
+                            aman. Anda bisa merestore item yang Anda copy hari ini, kemarin, atau minggu lalu dengan
+                            satu klik.</p>
+                    </section>
+                    <section class="feat-item glass">
+                        <h4 data-i18n="f4-t">🏷️ Image Auto-Tagging</h4>
+                        <p data-i18n="f4-d">AI otomatis mengenali objek dalam foto Anda. Mencari koleksi 'pantai',
+                            'dokumen', atau 'mobil' kini instan tanpa perlu memberi kategori secara manual.</p>
+                    </section>
+                    <section class="feat-item glass">
+                        <h4 data-i18n="f5-t">📝 Mass Renamer Pro</h4>
+                        <p data-i18n="f5-d">Ubah nama ribuan file sekaligus dengan pola penamaan cerdas yang fleksibel.
+                            Sangat efisien untuk koleksi foto, video, atau dokumen proyek skala besar.</p>
+                    </section>
+                    <section class="feat-item glass">
+                        <h4 data-i18n="f6-t">📷 Metadata Extractor</h4>
+                        <p data-i18n="f6-d">Akses detail teknis mendalam (Aperture, ISO, focal length) bahkan untuk
+                            format RAW profesional. Alat wajib bagi fotografer digital.</p>
+                    </section>
+                    <section class="feat-item glass">
+                        <h4 data-i18n="f7-t">🔒 Encrypted Vault & Shredder</h4>
+                        <p data-i18n="f7-d">Amankan file sensitif Anda dengan enkripsi AES-256 tingkat militer. Gunakan
+                            fitur Shredder untuk menghancurkan file secara permanen melampaui kemampuan software
+                            recovery.</p>
+                    </section>
+                    <section class="feat-item glass">
+                        <h4 data-i18n="f8-t">🔍 Duplicate Finder & Search</h4>
+                        <p data-i18n="f8-d">Temukan file duplikat tersembunyi dan hapus instan untuk menghemat ruang
+                            disk. Pencarian cerdas menemukan file Anda sedalam apapun folder penyimpanannya.</p>
+                    </section>
+                    <section class="feat-item glass">
+                        <h4 data-i18n="f9-t">📊 Folder Size Visualizer</h4>
+                        <p data-i18n="f9-d">Dapatkan peta visual penyimpanan PC Anda. Identifikasi seketika folder mana
+                            yang 'mencuri' ruang penyimpanan Anda dengan representasi grafis yang jelas.</p>
+                    </section>
+                </div>
+            </section>
+
+            <section class="cta-final">
+                <div class="container glass">
+                    <h2 data-i18n="cta-final-h2">Hentikan Kerugian Anda Sekarang.</h2>
+                    <p data-i18n="cta-final-p">Kekacauan data adalah bom waktu. Download File Master sekarang dan ambil
+                        kendali penuh atas waktu dan produktivitas Anda.</p>
                     <a href="https://drive.google.com/file/d/1NgMt37TYRmsk81OMxbdIHeC7iCaRbRPL/view?usp=sharing"
-                        target="_blank" class="btn btn-primary" id="download" data-i18n="hero-download">Download untuk
-                        Windows — Gratis</a>
-                    <p class="cta-note" data-i18n="hero-note">Jangan tunggu sampai hard drive Anda penuh untuk mulai
-                        merapikannya.</p>
+                        target="_blank" rel="noopener" class="btn btn-primary btn-large"
+                        data-i18n="cta-final-btn">Selamatkan PC Saya Sekarang</a>
                 </div>
-            </div>
-            <div class="hero-image">
-                <div class="glass-container">
-                    <img src="screenshot.png" alt="File Master Interface" id="app-preview">
-                </div>
-            </div>
-        </section>
-
-        <section class="loss-grid container">
-            <h2 class="section-title" data-i18n="section-cost-title">Apa Akibat dari Ruang Kerja yang
-                <span>BERANTAKAN?</span>
-            </h2>
-            <div class="cards">
-                <div class="card glass">
-                    <div class="icon">⌛</div>
-                    <h3 data-i18n="card1-title">Produktivitas Hilang</h3>
-                    <p data-i18n="card1-desc">Berhenti membuang 30+ menit setiap hari hanya untuk mengganti nama file
-                        atau mencari satu PDF. Itu lebih dari 180 jam setahun yang hilang selamanya.</p>
-                </div>
-                <div class="card glass">
-                    <div class="icon">💾</div>
-                    <h3 data-i18n="card2-title">Ruang Disk Terbuang</h3>
-                    <p data-i18n="card2-desc">PC Anda sesak karena file duplikat. Jangan membayar penyimpanan cloud
-                        mahal hanya karena Anda tidak punya alat untuk membersihkan drive lokal Anda.</p>
-                </div>
-                <div class="card glass">
-                    <div class="icon">📂</div>
-                    <h3 data-i18n="card3-title">Kekacauan yang Tidak Terkendali</h3>
-                    <p data-i18n="card3-desc">Menamai ratusan file satu per satu adalah siksaan mental. Jangan biarkan
-                        proyek Anda membusuk karena penamaan "folder_baru_final_v2".</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Detailed Features Section -->
-        <section class="detailed-features container">
-            <h2 class="section-title" data-i18n="features-title">Fitur Lengkap yang Menyelamatkan <span>Masa Depan
-                    Anda</span></h2>
-            <div class="feature-grid">
-                <div class="feat-item glass">
-                    <h4 data-i18n="f1-t">🚀 Dual-Pane File Explorer</h4>
-                    <p data-i18n="f1-d">Kelola file 2x lebih cepat dengan dua panel berdampingan. Sistem Copy-Paste
-                        Asinkron memastikan aplikasi tetap lancar tanpa hang saat memproses file besar. Mendukung layout
-                        vertikal dan horizontal untuk fleksibilitas maksimal.</p>
-                </div>
-                <div class="feat-item glass">
-                    <h4 data-i18n="f2-t">🤖 AI Assistant (Gemini Core)</h4>
-                    <p data-i18n="f2-d">Tanya apa saja pada file Anda. Ringkas dokumen PDF atau Word yang tebal dalam
-                        hitungan detik. AI kami membaca untuk Anda agar Anda bisa fokus pada keputusan penting, bukan
-                        filler.</p>
-                </div>
-                <div class="feat-item glass">
-                    <h4 data-i18n="f3-t">📋 System-Wide Clipboard History</h4>
-                    <p data-i18n="f3-d">Mencatat setiap teks dan file yang Anda copy ke dalam database SQLite yang aman.
-                        Anda bisa merestore item yang Anda copy hari ini, kemarin, atau minggu lalu dengan satu klik.
-                    </p>
-                </div>
-                <div class="feat-item glass">
-                    <h4 data-i18n="f4-t">🏷️ Image Auto-Tagging</h4>
-                    <p data-i18n="f4-d">AI otomatis mengenali objek dalam foto Anda. Mencari koleksi 'pantai',
-                        'dokumen', atau 'mobil' kini instan tanpa perlu memberi kategori secara manual.</p>
-                </div>
-                <div class="feat-item glass">
-                    <h4 data-i18n="f5-t">📝 Mass Renamer Pro</h4>
-                    <p data-i18n="f5-d">Ubah nama ribuan file sekaligus dengan pola penamaan cerdas yang fleksibel.
-                        Sangat efisien untuk fotografer, videografer, dan pengarsip data skala besar.</p>
-                </div>
-                <div class="feat-item glass">
-                    <h4 data-i18n="f6-t">📷 Metadata Extractor</h4>
-                    <p data-i18n="f6-d">Akses detail teknis mendalam (Aperture, ISO, focal length) bahkan untuk format
-                        RAW profesional. Alat wajib bagi fotografer digital.</p>
-                </div>
-                <div class="feat-item glass">
-                    <h4 data-i18n="f7-t">🔒 Encrypted Vault & Shredder</h4>
-                    <p data-i18n="f7-d">Amankan file sensitif Anda dengan enkripsi AES-256 tingkat militer. Gunakan
-                        fitur Shredder untuk menghancurkan file secara permanen melampaui kemampuan software recovery.
-                    </p>
-                </div>
-                <div class="feat-item glass">
-                    <h4 data-i18n="f8-t">🔍 Duplicate Finder & Search</h4>
-                    <p data-i18n="f8-d">Temukan file duplikat tersembunyi dan hapus instan untuk menghemat ruang disk.
-                        Pencarian cerdas menemukan file Anda sedalam apapun folder penyimpanannya.</p>
-                </div>
-                <div class="feat-item glass">
-                    <h4 data-i18n="f9-t">📊 Folder Size Visualizer</h4>
-                    <p data-i18n="f9-d">Dapatkan peta visual penyimpanan PC Anda. Identifikasi seketika folder mana yang
-                        'mencuri' ruang penyimpanan Anda dengan representasi grafis yang jelas.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-final">
-            <div class="container glass">
-                <h2 data-i18n="cta-final-h2">Hentikan Kerugian Anda Sekarang.</h2>
-                <p data-i18n="cta-final-p">Kekacauan data adalah bom waktu. Download File Master sekarang dan ambil
-                    kendali penuh atas waktu dan produktivitas Anda.</p>
-                <a href="https://drive.google.com/file/d/1NgMt37TYRmsk81OMxbdIHeC7iCaRbRPL/view?usp=sharing"
-                    target="_blank" class="btn btn-primary btn-large" data-i18n="cta-final-btn">Selamatkan PC Saya
-                    Sekarang</a>
-            </div>
-        </section>
+            </section>
+        </article>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 File Master by Isparmo. All rights reserved.</p>
+            <p>&copy; 2026 File Master by <a href="https://github.com/isparmo" target="_blank" rel="author">Isparmo</a>.
+                Seluruh hak cipta dilindungi.</p>
         </div>
     </footer>
 
     <!-- Modal for Image Zoom -->
-    <div id="image-modal" class="modal">
-        <span class="modal-close">&times;</span>
-        <img class="modal-content" id="zoomed-image">
+    <div id="image-modal" class="modal" role="dialog" aria-label="Gambar Zoom">
+        <span class="modal-close" aria-label="Tutup">&times;</span>
+        <img class="modal-content" id="zoomed-image" alt="Perbesar tampilan aplikasi">
     </div>
 
     <script src="script.js"></script>

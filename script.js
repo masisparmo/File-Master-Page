@@ -77,7 +77,10 @@ const translations = {
     }
 };
 
+let currentLang = 'id';
+
 function setLanguage(lang) {
+    currentLang = lang;
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
@@ -94,14 +97,22 @@ function setLanguage(lang) {
     });
 
     document.documentElement.lang = lang;
-    document.body.className = `${document.body.classList.contains('light-mode') ? 'light-mode' : ''} lang-${lang}`;
+    // Keep theme class if present
+    const isLight = document.body.classList.contains('light-mode');
+    document.body.className = `${isLight ? 'light-mode' : ''} lang-${lang}`;
 }
 
 // Theme Toggle Logic
+function updateThemeIcon(isLight) {
+    const icons = document.querySelectorAll('.theme-icon, .theme-icon-mobile');
+    icons.forEach(icon => {
+        icon.textContent = isLight ? '☀️' : '🌙';
+    });
+}
+
 function toggleTheme() {
     const isLight = document.body.classList.toggle('light-mode');
-    const icon = document.querySelector('.theme-icon');
-    icon.textContent = isLight ? '☀️' : '🌙';
+    updateThemeIcon(isLight);
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
 }
 
@@ -120,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Restore Theme
     if (localStorage.getItem('theme') === 'light') {
         document.body.classList.add('light-mode');
-        document.querySelector('.theme-icon').textContent = '☀️';
+        updateThemeIcon(true);
     }
 
     // Initial Animation Classes
@@ -139,12 +150,31 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
     document.head.appendChild(style);
 
-    // Event Listeners
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.mobile-link').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        });
+    });
+
+    // Event Listeners for Theme
+    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+    document.getElementById('theme-toggle-mobile').addEventListener('click', toggleTheme);
+
+    // Event Listeners for Language
     document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
     });
-
-    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
 
     // Image Zoom (Lightbox) Logic
     const modal = document.getElementById('image-modal');
@@ -152,21 +182,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalImg = document.getElementById('zoomed-image');
     const closeBtn = document.getElementsByClassName('modal-close')[0];
 
-    img.onclick = function () {
-        modal.style.display = "block";
-        modalImg.src = this.src;
-        document.body.style.overflow = "hidden"; // Prevent scroll
+    if (img) {
+        img.onclick = function () {
+            modal.style.display = "block";
+            modalImg.src = this.src;
+            document.body.style.overflow = "hidden";
+        }
     }
 
     const closeModal = function () {
         modal.style.display = "none";
-        document.body.style.overflow = "auto"; // Restore scroll
+        document.body.style.overflow = "auto";
     }
 
-    closeBtn.onclick = closeModal;
-    modal.onclick = function (event) {
-        if (event.target === modal) {
-            closeModal();
+    if (closeBtn) closeBtn.onclick = closeModal;
+    if (modal) {
+        modal.onclick = function (event) {
+            if (event.target === modal) {
+                closeModal();
+            }
         }
     }
 
