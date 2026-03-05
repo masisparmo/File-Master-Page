@@ -164,58 +164,82 @@ nav {
     color: white;
 }
 
-/* Hero */
+/* Hero Section Refined */
 .hero {
-    padding: 180px 0 100px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    padding: 140px 0 60px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
+    gap: 3rem;
+}
+
+.hero-content {
+    max-width: 900px;
+    width: 100%;
 }
 
 .loss-heading {
-    font-size: 4rem;
-    line-height: 1.1;
+    font-size: clamp(2rem, 6vw, 3.2rem);
+    /* Reduced to prevent blowout */
+    line-height: 1.2;
     font-weight: 800;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    letter-spacing: -1.5px;
+    text-wrap: balance;
+    /* Modern text wrapping */
 }
 
 .loss-heading span {
     color: var(--accent-red);
-    /* Removed strike-through as per user request */
 }
 
 .hero-desc {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     color: var(--text-secondary);
-    margin-bottom: 2.5rem;
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .hero-ctas {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
 }
 
 .cta-note {
-    font-size: 0.9rem;
+    font-size: 0.95rem;
     color: var(--accent-red);
-    font-weight: 600;
+    font-weight: 700;
+    width: 100%;
+    /* Force to new line in flex if needed, or just let it flow */
+    margin-top: 0.5rem;
+}
+
+.hero-image {
+    width: 100%;
+    max-width: 1000px;
+    perspective: 2000px;
 }
 
 .glass-container {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(20px);
-    padding: 20px;
-    border-radius: 24px;
-    box-shadow: 0 30px 60px var(--card-shadow);
-    transform: perspective(1000px) rotateY(-10deg);
-    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s ease;
+    padding: 12px;
+    border-radius: 20px;
+    box-shadow: 0 40px 80px var(--card-shadow);
+    transform: rotateX(5deg);
+    /* Professional tilt */
+    transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .glass-container:hover {
-    transform: perspective(1000px) rotateY(0deg);
+    transform: rotateX(0deg) scale(1.02);
 }
 
 #app-preview {
@@ -339,6 +363,7 @@ nav {
 .ai-content h2 span {
     background: linear-gradient(90deg, #3b82f6, #60a5fa);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
