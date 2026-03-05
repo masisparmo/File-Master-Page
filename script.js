@@ -81,9 +81,7 @@ function setLanguage(lang) {
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
-            // Check if it's a span with inner HTML (for <span> tags in title)
             if (el.tagName === 'SPAN' || el.classList.contains('section-title') || el.classList.contains('loss-heading')) {
-                // If it contains a span child, we might need more complex logic but here we simple replace
                 el.innerHTML = translations[lang][key];
             } else {
                 el.textContent = translations[lang][key];
@@ -96,7 +94,15 @@ function setLanguage(lang) {
     });
 
     document.documentElement.lang = lang;
-    document.body.className = `lang-${lang}`;
+    document.body.className = `${document.body.classList.contains('light-mode') ? 'light-mode' : ''} lang-${lang}`;
+}
+
+// Theme Toggle Logic
+function toggleTheme() {
+    const isLight = document.body.classList.toggle('light-mode');
+    const icon = document.querySelector('.theme-icon');
+    icon.textContent = isLight ? '☀️' : '🌙';
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
 }
 
 // Intersection Observer for scroll animations
@@ -111,6 +117,12 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Restore Theme
+    if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+        document.querySelector('.theme-icon').textContent = '☀️';
+    }
+
     // Initial Animation Classes
     const animateElements = document.querySelectorAll('.card, .hero-content, .hero-image, .feat-item, .glass');
     animateElements.forEach((el, index) => {
@@ -121,19 +133,42 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(el);
     });
 
-    // Animate on scroll visibility
     const style = document.createElement('style');
     style.innerHTML = `
         .reveal.visible { opacity: 1 !important; transform: translateY(0) !important; }
     `;
     document.head.appendChild(style);
 
-    // Language Switcher Logic
+    // Event Listeners
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            setLanguage(btn.getAttribute('data-lang'));
-        });
+        btn.addEventListener('click', () => setLanguage(btn.getAttribute('data-lang')));
     });
+
+    document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+
+    // Image Zoom (Lightbox) Logic
+    const modal = document.getElementById('image-modal');
+    const img = document.getElementById('app-preview');
+    const modalImg = document.getElementById('zoomed-image');
+    const closeBtn = document.getElementsByClassName('modal-close')[0];
+
+    img.onclick = function () {
+        modal.style.display = "block";
+        modalImg.src = this.src;
+        document.body.style.overflow = "hidden"; // Prevent scroll
+    }
+
+    const closeModal = function () {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto"; // Restore scroll
+    }
+
+    closeBtn.onclick = closeModal;
+    modal.onclick = function (event) {
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
 
     // Set Default Language (Indonesian)
     setLanguage('id');
